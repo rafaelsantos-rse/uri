@@ -29,3 +29,17 @@ int main(void){
   }
   return 0;
 }
+
+void sort(float a, float b, float c, float L[]){
+  if(a < b && a < c){
+    if(b < c){
+      L[0] == 
+    }
+    else if(c < b){
+
+    }
+    else if(c == b){
+
+    }
+  }
+}
