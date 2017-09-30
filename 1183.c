@@ -3,16 +3,14 @@
 #include <time.h>
 int main(void){
 	/*srand(time(NULL));*/
-	int column, len = 12,i,j;
+	int len = 12,i,j;
 	char opt;
 	float m[len][len], sum = 0;
-	scanf("%i", &column);
-	opt = getchar();
 	scanf("%c", &opt);
 	for (i = 0; i < len; ++i){
 		for(j = 0; j < len; j++){
 			scanf("%f", &m[i][j]);
-			if(j == column){
+			if(j > i){
 				sum += m[i][j];
 			}
 			/*just debugging:
