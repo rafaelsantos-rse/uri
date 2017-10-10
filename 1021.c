@@ -1,56 +1,42 @@
 #include <stdio.h>
-
-int func1(int n1, int n2){
-
-	if(n1 >= n2){
-		int n = (n1 - n1%n2)/n2;
-		printf("%d nota(s) de R$ %d.00\n",n, n2);
-		return n1%n2;
-
-	} else{
-		int n = 0;
-		printf("%d nota(s) de R$ %d.00\n",n, n2);
-		return n1;
-
+int main(void){
+	void decomporR(float a, int *B);
+	void decomporC(float a, float *B);
+	void *p;
+	int Reais[6] = {100, 50, 20, 10, 5, 2 }, i;
+	float Centavos[6] = {1.0, 0.5, 0.25, 0.10, 0.05, 0.01}, dinheiro;
+	scanf("%f",&dinheiro);
+	p = &Reais[0];
+	for (i = 0; i < 6; i++){
+		decomporR(dinheiro, p);
+		++p;
+	}
+	p = &Centavos[0];
+	for (i = 0; i < 6; i++){
+		decomporC(dinheiro, p);
+		p++;
+	}
+	return 0;
+}
+void decomporR(float a, int *B){
+	int b = *B;
+	if(b <= 100 && b >= 2){
+		int c = 0;
+		while (a >= b){
+			a -= b;
+			c++;
+		}
+		printf("%d nota(s) de R$ %d.00\n", c, b);
 	}
 }
-/*float func2(float n1, float n2){
-	if(n1 >= n2){
-		int n = (n1 - n1%n2)/n2;
-		printf("%d moeda(s) de R$ %f\n",n, n2);
-		return n1%n2;
-	} else{
-		int n = 0;
-		printf("%d moeda(s) de R$ %f\n",n, n2);
-		return n1;
+void decomporC(float a, float *B){
+ 	float b  = *B;
+	if(b <= 1 && b >= 0.01){
+	 	int c = 0;
+	 	while (a >= b){
+	 		a -= b;
+	 		c++;
+	 	}
+	 	printf("%d nota(s) de R$ %.2f\n",(int) c, b);
 	}
-}*/
-int main(void){
-
-	int list1[6], i = 0;
-	float list2[6], d;
-	list1[0] = 100;
-	list1[1] = 50;
-	list1[2] = 20;
-	list1[3] = 10;
-	list1[4] = 5;
-	list1[5] = 2;
-	list2[0] = 1.00;
-	list2[1] = 0.50;
-	list2[2] = 0.25;
-	list2[3] = 0.10;
-	list2[4] = 0.05;
-	list2[5] = 0.01;
-	scanf("%f",&d);
-	while (i < 6){
-		d = func1(d, list1[i]);
-		i++;
-	}
-	printf("Resta: %f\n",d);
-	i = 0;
-	/*while (i < 6){
-		d = func2(d, list2[i]);
-		i++;
-	}*/ 
-	return 0;
 }
